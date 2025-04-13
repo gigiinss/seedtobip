@@ -1,0 +1,14 @@
+# Python files
+__pycache__/
+*.py[cod]
+*.class
+
+# API keys and sensitive info
+*.key
+*.secret
+
+# Virtual environments
+venv/
+env/
+.env
+
