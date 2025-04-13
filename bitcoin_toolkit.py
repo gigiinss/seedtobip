@@ -1,4 +1,3 @@
-# bitcoin_toolkit.py
 import os
 import sys
 import importlib.util
@@ -24,11 +23,10 @@ def main_menu():
     print("Escolha uma ferramenta:")
     print("1. Conversor de Seed para Chave Privada")
     print("2. Decodificador BIP38")
-    print("3. Interface de Negociação Kraken")
     print("0. Sair")
     
     try:
-        choice = int(input("\nSua escolha (0-3): "))
+        choice = int(input("\nSua escolha (0-2): "))
         return choice
     except ValueError:
         return -1
@@ -38,8 +36,7 @@ def main():
     # Verifica se todos os arquivos necessários existem
     required_files = {
         'seed_to_private.py': 'Conversor de Seed para Chave Privada',
-        'bip38_decoder.py': 'Decodificador BIP38',
-        'kraken_trader.py': 'Interface de Negociação Kraken'
+        'bip38_decoder.py': 'Decodificador BIP38'
     }
     
     missing_files = []
@@ -55,7 +52,7 @@ def main():
         print("\nPor favor, certifique-se de que todos os arquivos do kit estão na mesma pasta.")
         input("\nPressione Enter para sair...")
         return
-    
+
     while True:
         choice = main_menu()
         
@@ -67,19 +64,14 @@ def main():
             # Carrega e executa o conversor de seed
             seed_module = load_module('seed_to_private.py', 'seed_to_private')
             seed_module.main()
-            
+        
         elif choice == 2:
             # Carrega e executa o decodificador BIP38
             bip38_module = load_module('bip38_decoder.py', 'bip38_decoder')
             bip38_module.main()
-            
-        elif choice == 3:
-            # Carrega e executa a interface de negociação Kraken
-            kraken_module = load_module('kraken_trader.py', 'kraken_trader')
-            kraken_module.main()
-            
+        
         else:
-            print("\nOpção inválida. Por favor, escolha uma opção entre 0 e 3.")
+            print("\nOpção inválida. Por favor, escolha uma opção entre 0 e 2.")
             input("\nPressione Enter para continuar...")
 
 if __name__ == "__main__":
